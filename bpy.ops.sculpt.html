@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sculpt Operators &mdash; Blender Python API</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+    <link rel="canonical" href="https://docs.blender.org/api/current/bpy.ops.sculpt.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sequencer Operators" href="bpy.ops.sequencer.html" />
+    <link rel="prev" title="Script Operators" href="bpy.ops.script.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Blender 2.83.0 Python API
+          
+
+          
+            
+            <img src="_static/blender_logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0849af45910e
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart: new to Blender or scripting and want to get your feet wet?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview: a more complete explanation of Python integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage: examples of how to use the API reference docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice: Conventions to follow for writing good scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks: Hints to help you while writing scripts for Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotcha's: some of the problems you may come up against when writing scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">List of changes since last Blender release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.previews.html">bpy.utils submodule (bpy.utils.previews)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Shader Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Blender 2.83.0 Python API</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="bpy.ops.html">Operators (bpy.ops)</a> &raquo;</li>
+        
+      <li>Sculpt Operators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-bpy.ops.sculpt">
+<span id="sculpt-operators"></span><h1>Sculpt Operators<a class="headerlink" href="#module-bpy.ops.sculpt" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="bpy.ops.sculpt.brush_stroke">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">brush_stroke</code><span class="sig-paren">(</span><em class="sig-param">stroke=None</em>, <em class="sig-param">mode='NORMAL'</em>, <em class="sig-param">ignore_background_click=False</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.brush_stroke" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sculpt a stroke into the geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'NORMAL'</em><em>, </em><em>'INVERT'</em><em>, </em><em>'SMOOTH'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code> Regular, Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code> Invert, Invert action of brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code> Smooth, Switch brush to smooth mode for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>ignore_background_click</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ignore Background Click, Clicks on the background do not start the stroke</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.detail_flood_fill">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">detail_flood_fill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.detail_flood_fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flood fill the mesh with the selected detail setting</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.dirty_mask">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">dirty_mask</code><span class="sig-paren">(</span><em class="sig-param">dirty_only=False</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.dirty_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a mask based on the geometry cavity and pointiness</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dirty_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Dirty Only, Don’t calculate cleans for convex areas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.dynamic_topology_toggle">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">dynamic_topology_toggle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.dynamic_topology_toggle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic topology alters the mesh topology while sculpting</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.face_set_change_visibility">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">face_set_change_visibility</code><span class="sig-paren">(</span><em class="sig-param">mode='TOGGLE'</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_change_visibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the visibility of the Face Sets of the sculpt</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'SHOW_ACTIVE'</em><em>, </em><em>'HIDE_ACTIVE'</em><em>, </em><em>'INVERT'</em><em>, </em><em>'SHOW_ALL'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code> Toggle Visibility, Hide all Face Sets except for the active one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW_ACTIVE</span></code> Show Active Face Set, Show Active Face Set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE_ACTIVE</span></code> Hide Active Face Sets, Hide Active Face Sets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code> Invert Face Set Visibility, Invert Face Set Visibility.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW_ALL</span></code> Show All Face Sets, Show All Face Sets.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.face_sets_create">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">face_sets_create</code><span class="sig-paren">(</span><em class="sig-param">mode='MASKED'</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Face Set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'MASKED'</em><em>, </em><em>'VISIBLE'</em><em>, </em><em>'ALL'</em><em>, </em><em>'SELECTION'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MASKED</span></code> Face Set From Masked, Create a new Face Set from the masked faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VISIBLE</span></code> Face Set From Visible, Create a new Face Set from the visible vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code> Face Set Full Mesh, Create an unique Face Set with all faces in the sculpt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTION</span></code> Face Set From Edit Mode Selection, Create an Face Set corresponding to the Edit Mode face selection.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.face_sets_init">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">face_sets_init</code><span class="sig-paren">(</span><em class="sig-param">mode='LOOSE_PARTS'</em>, <em class="sig-param">threshold=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes all Face Sets in the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'LOOSE_PARTS'</em><em>, </em><em>'MATERIALS'</em><em>, </em><em>'NORMALS'</em><em>, </em><em>'UV_SEAMS'</em><em>, </em><em>'CREASES'</em><em>, </em><em>'BEVEL_WEIGHT'</em><em>, </em><em>'SHARP_EDGES'</em><em>, </em><em>'FACE_MAPS'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOOSE_PARTS</span></code> Face Sets From Loose Parts, Create a Face Set per loose part in the mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MATERIALS</span></code> Face Sets From Material Slots, Create a Face Set per Material Slot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMALS</span></code> Face Sets From Mesh Normals, Create Face Sets for Faces that have similar normal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UV_SEAMS</span></code> Face Sets From UV Seams, Create Face Sets using UV Seams as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREASES</span></code> Face Sets From Edge Creases, Create Face Sets using Edge Creases as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BEVEL_WEIGHT</span></code> Face Sets From Bevel Weight, Create Face Sets using Bevel Weights as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARP_EDGES</span></code> Face Sets From Sharp Edges, Create Face Sets using Sharp Edges as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE_MAPS</span></code> Face Sets From Face Maps, Create a Face Set per Face Map.</p></li>
+</ul>
+</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Minimum value to consider a certain attribute a boundary when creating the Face Sets</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.face_sets_randomize_colors">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">face_sets_randomize_colors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_randomize_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a new set of random colors to render the Face Sets in the viewport</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.mask_expand">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">mask_expand</code><span class="sig-paren">(</span><em class="sig-param">invert=True</em>, <em class="sig-param">use_cursor=True</em>, <em class="sig-param">update_pivot=True</em>, <em class="sig-param">smooth_iterations=2</em>, <em class="sig-param">mask_speed=5</em>, <em class="sig-param">use_normals=True</em>, <em class="sig-param">keep_previous_mask=False</em>, <em class="sig-param">edge_sensitivity=300</em>, <em class="sig-param">create_face_set=False</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands a mask from the initial active vertex under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert the new mask</p></li>
+<li><p><strong>use_cursor</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Cursor, Expand the mask to the cursor position</p></li>
+<li><p><strong>update_pivot</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Update Pivot Position, Set the pivot position to the mask border after creating the mask</p></li>
+<li><p><strong>smooth_iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth iterations</p></li>
+<li><p><strong>mask_speed</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mask speed</p></li>
+<li><p><strong>use_normals</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Normals, Generate the mask using the normals and curvature of the model</p></li>
+<li><p><strong>keep_previous_mask</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keep Previous Mask, Generate the new mask on top of the current one</p></li>
+<li><p><strong>edge_sensitivity</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>2000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edge Detection Sensitivity, Sensitivity for expanding the mask across sculpted sharp edges when using normals to generate the mask</p></li>
+<li><p><strong>create_face_set</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Expand Face Mask, Expand a new Face Mask instead of the sculpt mask</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.mask_filter">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">mask_filter</code><span class="sig-paren">(</span><em class="sig-param">filter_type='SMOOTH'</em>, <em class="sig-param">iterations=1</em>, <em class="sig-param">auto_iteration_count=False</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a filter to modify the current mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter_type</strong> (<em>enum in</em><em> [</em><em>'SMOOTH'</em><em>, </em><em>'SHARPEN'</em><em>, </em><em>'GROW'</em><em>, </em><em>'SHRINK'</em><em>, </em><em>'CONTRAST_INCREASE'</em><em>, </em><em>'CONTRAST_DECREASE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Type, Filter that is going to be applied to the mask</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code> Smooth Mask, Smooth mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARPEN</span></code> Sharpen Mask, Sharpen mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROW</span></code> Grow Mask, Grow mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHRINK</span></code> Shrink Mask, Shrink mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTRAST_INCREASE</span></code> Increase contrast, Increase the contrast of the paint mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTRAST_DECREASE</span></code> Decrease contrast, Decrease the contrast of the paint mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>iterations</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Iterations, Number of times that the filter is going to be applied</p></li>
+<li><p><strong>auto_iteration_count</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Iteration Count, Use a automatic number of iterations based on the number of vertices of the sculpt</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.mesh_filter">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">mesh_filter</code><span class="sig-paren">(</span><em class="sig-param">type='INFLATE'</em>, <em class="sig-param">strength=1.0</em>, <em class="sig-param">deform_axis={'X'</em>, <em class="sig-param">'Y'</em>, <em class="sig-param">'Z'}</em>, <em class="sig-param">use_face_sets=False</em>, <em class="sig-param">surface_smooth_shape_preservation=0.5</em>, <em class="sig-param">surface_smooth_current_vertex=0.5</em>, <em class="sig-param">sharpen_smooth_ratio=0.35</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mesh_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a filter to modify the current mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'SMOOTH'</em><em>, </em><em>'SCALE'</em><em>, </em><em>'INFLATE'</em><em>, </em><em>'SPHERE'</em><em>, </em><em>'RANDOM'</em><em>, </em><em>'RELAX'</em><em>, </em><em>'RELAX_FACE_SETS'</em><em>, </em><em>'SURFACE_SMOOTH'</em><em>, </em><em>'SHARPEN'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Filter type, Operation that is going to be applied to the mesh</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code> Smooth, Smooth mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCALE</span></code> Scale, Scale mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFLATE</span></code> Inflate, Inflate mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHERE</span></code> Sphere, Morph into sphere.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RANDOM</span></code> Random, Randomize vertex positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELAX</span></code> Relax, Relax mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELAX_FACE_SETS</span></code> Relax Face Sets, Smooth the edges of all the Face Sets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE_SMOOTH</span></code> Surface Smooth, Smooth the surface of the mesh, preserving the volume.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARPEN</span></code> Sharpen, Sharpen the cavities of the mesh.</p></li>
+</ul>
+</p></li>
+<li><p><strong>strength</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strength, Filter Strength</p></li>
+<li><p><strong>deform_axis</strong> (<em>enum set in {'X'</em><em>, </em><em>'Y'</em><em>, </em><em>'Z'}</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Deform axis, Apply the deformation in the selected axis</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> X, Deform in the X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code> Y, Deform in the Y axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z</span></code> Z, Deform in the Z axis.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_face_sets</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Face Sets, Apply the filter only to the Face Mask under the cursor</p></li>
+<li><p><strong>surface_smooth_shape_preservation</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Preservation, How much of the original shape is preserved when smoothing</p></li>
+<li><p><strong>surface_smooth_current_vertex</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Per Vertex Displacement, How much the position of each individual vertex influences the final result</p></li>
+<li><p><strong>sharpen_smooth_ratio</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Ratio, How much smoothing is applied to polished surfaces</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.optimize">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recalculate the sculpt BVH to improve performance</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.sample_detail_size">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">sample_detail_size</code><span class="sig-paren">(</span><em class="sig-param">location=(0</em>, <em class="sig-param">0)</em>, <em class="sig-param">mode='DYNTOPO'</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.sample_detail_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the mesh detail on clicked point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>int array of 2 items in</em><em> [</em><em>0</em><em>, </em><em>32767</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Screen Coordinates of sampling</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'DYNTOPO'</em><em>, </em><em>'VOXEL'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Detail Mode, Target sculpting workflow that is going to use the sampled size</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DYNTOPO</span></code> Dyntopo, Sample dyntopo detail.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VOXEL</span></code> Voxel, Sample mesh voxel size.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.sculptmode_toggle">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">sculptmode_toggle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.sculptmode_toggle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle sculpt mode in 3D view</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.set_detail_size">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">set_detail_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.set_detail_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mesh detail (either relative or constant one, depending on current dyntopo mode)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.set_persistent_base">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">set_persistent_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.set_persistent_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the copy of the mesh that is being sculpted on</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.set_pivot_position">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">set_pivot_position</code><span class="sig-paren">(</span><em class="sig-param">mode='UNMASKED'</em>, <em class="sig-param">mouse_x=0.0</em>, <em class="sig-param">mouse_y=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.set_pivot_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the sculpt transform pivot position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'ORIGIN'</em><em>, </em><em>'UNMASKED'</em><em>, </em><em>'BORDER'</em><em>, </em><em>'ACTIVE'</em><em>, </em><em>'SURFACE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORIGIN</span></code> Origin, Sets the pivot to the origin of the sculpt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNMASKED</span></code> Unmasked, Sets the pivot position to the average position of the unmasked vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BORDER</span></code> Mask border, Sets the pivot position to the center of the border of the mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> Active vertex, Sets the pivot position to the active vertex position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code> Surface, Sets the pivot position to the surface under the cursor.</p></li>
+</ul>
+</p></li>
+<li><p><strong>mouse_x</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Position X, Position of the mouse used for “Surface” mode</p></li>
+<li><p><strong>mouse_y</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Position Y, Position of the mouse used for “Surface” mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.symmetrize">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">symmetrize</code><span class="sig-paren">(</span><em class="sig-param">merge_tolerance=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.symmetrize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symmetrize the topology modifications</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>merge_tolerance</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Merge Limit, Distance within which symmetrical vertices are merged</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bpy.ops.sculpt.uv_sculpt_stroke">
+<code class="sig-prename descclassname">bpy.ops.sculpt.</code><code class="sig-name descname">uv_sculpt_stroke</code><span class="sig-paren">(</span><em class="sig-param">mode='NORMAL'</em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.uv_sculpt_stroke" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sculpt UVs using a brush</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'NORMAL'</em><em>, </em><em>'INVERT'</em><em>, </em><em>'RELAX'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode, Stroke Mode</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code> Regular, Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code> Invert, Invert action of brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELAX</span></code> Relax, Switch brush to relax mode for duration of stroke.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bpy.ops.sequencer.html" class="btn btn-neutral float-right" title="Sequencer Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bpy.ops.script.html" class="btn btn-neutral float-left" title="Script Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Blender Foundation
+      <span class="lastupdated">
+        Last updated on 06/05/2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
